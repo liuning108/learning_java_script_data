@@ -10,11 +10,18 @@
  *  size():返回栈里的元素个数。该方法和数组的 length 属性很类似。
  *
  */
+const _items = Symbol('stackItems');
 
+const items = new WeakMap(); // {1}
 class Stack{
+
+    #esCount = 0
+
     constructor() {
         this.count =0
         this.items = {}
+        this[_items] = [];
+        items.set(this,[])
     }
 
     /**
@@ -75,6 +82,20 @@ class Stack{
     clear(){
         this.count =0
         this.items={}
+    }
+
+    /**
+     * 在数组版本中，我们不需要关心 toString 方法的实现，因为数据结构可以直接使用数组已 经提供的 toString 方法。对于使用对象的版本，我们将创建一个 toString 方法来像数组一 样打印出栈的内容
+     */
+    toString(){
+        if (this.isEmpty()){
+            return ""
+        }
+        let objString = `${this.items[0]}`
+        for (let i =1 ; i<this.count; i++){
+            objString = `${objString},${this.items[i]}`
+        }
+        return  objString
     }
 
 }

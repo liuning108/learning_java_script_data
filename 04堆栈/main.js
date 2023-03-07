@@ -1,4 +1,5 @@
 let Stack =require('./stack')
+
 const stack = new Stack()
 
 console.log(stack.isEmpty())
@@ -16,3 +17,25 @@ stack.push(15)
 stack.pop()
 stack.pop()
 console.log(stack.size()) // 输出2
+console.log(stack.toString())
+
+console.log(Object.getOwnPropertyNames(stack))
+console.log(Object.keys(stack))
+
+
+let objectSymbols = Object.getOwnPropertySymbols(stack);
+console.log(objectSymbols)
+
+let decimalToBinary= require('./decimalToBinary')
+
+console.log(decimalToBinary(233))
+console.log(decimalToBinary(10))
+console.log(decimalToBinary(1000))
+
+
+let  baseConverter = require('./baseConverter')
+
+console.log(baseConverter(100345,2))
+console.log(baseConverter(100345,8))
+console.log(baseConverter(100345,16))
+console.log(baseConverter(100345,35))
