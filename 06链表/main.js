@@ -1,10 +1,12 @@
 
 
-const LinkedList = require('./linkedlist')
+const LinkedList = require('./DoublyLinkedList')
 
 const  list = new LinkedList()
-list.push(15)
-list.push(10)
+list.insert(15,0)
+list.insert(10,1)
+list.insert(12,2)
+list.remove(10)
 
-console.log(list)
+console.log(list.toString())
 
