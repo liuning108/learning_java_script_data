@@ -51,6 +51,93 @@ class Set {
         return false
     }
 
+    /**
+     * 如果想移除集合中的所有值，可以用 clear 方法。
+     */
+    clear(){
+        this.items = {}
+    }
+
+    size(){
+        return Object.keys(this.items).length
+    }
+
+    /**
+     * 要实现 values 方法，我们同样可以使用 Object 类内置的 values 方法。
+     * @returns {unknown[]}
+     */
+    values(){
+        return Object.values(this.items)
+    }
+
+    /**
+     *  并集:对于给定的两个集合，返回一个包含两个集合中所有元素的新集合。
+     *  交集:对于给定的两个集合，返回一个包含两个集合中共有元素的新集合。
+     *  差集:对于给定的两个集合，返回一个包含所有存在于第一个集合且不存在于第二个集
+     * 合的元素的新集合。
+     *  子集:验证一个给定集合是否是另一集合的子集。
+     */
+
+    /**
+     * 并集:对于给定的两个集合，返回一个包含两个集合中所有元素的新集合。
+     */
+    union(otherSet){
+        const unionSet = new Set();
+        this.values().forEach(value => unionSet.add(value))
+        otherSet.values().forEach(value=>unionSet.add(value))
+        return unionSet
+    }
+
+    /**
+    交集:对于给定的两个集合，返回一个包含两个集合中共有元素的新集合。
+     */
+    intersection(otherSet){
+        const intersectionSet = new Set()
+        const values = this.values()
+        for(let i =0;i<values.length;i++){
+            if (otherSet.has(values[i])){
+                intersectionSet.add(values[i])
+            }
+        }
+        return intersectionSet
+    }
+
+    /**
+     *  差集:对于给定的两个集合，返回一个包含所有存在于第一个集合且不存在于第二个集
+     * 合的元素的新集合。
+     */
+    difference(otherSet){
+        const differenceSet = new Set()
+        this.values().forEach(value => {
+            if (!otherSet.has(value)){
+                differenceSet.add(value)
+            }
+        })
+        return differenceSet
+    }
+
+
+    /**
+     * 子集
+     * 要介绍的最后一个集合运算是子集。其数学概念的一个例子是集合 A 是集合 B 的子集(或集
+     *  合 B 包含集合 A)，表示如下。
+     */
+    isSubsetOf(otherSet){
+        if(this.size()> otherSet.size()){
+            return false
+        }
+        let isSubset = true
+        this.values().every(value => {
+            if(!otherSet.has(value)){
+                isSubset =false
+                return false
+            }
+            return  true
+        })
+        return  isSubset
+    }
+
+
 }
 
 
