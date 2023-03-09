@@ -23,6 +23,11 @@ class  Linkedlist {
 
     }
 
+    clear(){
+        this.count = 0 // 它用来存储链表中的 元素数量
+        this.head = null
+    }
+
     /**
      * 1. 向链表尾部添加元素
      * 向 LinkedList 对象尾部添加一个元素时，可能有两种场景:链表为空，添加的是第一个 元素;链表不为空，向其追加元素。
