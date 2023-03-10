@@ -26,3 +26,13 @@ console.log(dictionary.toString())
 dictionary.forEach((k,v)=>{
     console.log('forEach',`key:${k},value:${v}`)
 })
+
+
+const HashTable = require('./HashTable')
+const hash = new HashTable();
+hash.put('Gandalf', 'gandalf@email.com');
+hash.put('John', 'johnsnow@email.com');
+hash.put('Tyrion', 'tyrion@email.com');
+console.log(hash.hashCode('Gandalf') + ' - Gandalf');
+console.log(hash.hashCode('John') + ' - John');
+console.log(hash.hashCode('Tyrion') + ' - Tyrion');
